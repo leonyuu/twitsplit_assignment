@@ -46,6 +46,7 @@ class MainViewController: UIViewController {
     private func loadData() {
         for _ in 0...5 {
             let post:TwitPost = TwitPost.init()
+            post.postSubTitle = "Today, 6:39 PM"
             post.postContent = "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself."
             twitPostList.append(post)
         }

@@ -11,21 +11,24 @@ import UIKit
 class TwitPost: NSObject {
     
     public var postID:Int32 = 0
+    public var postSubTitle:String = ""
     public var postContent:String = ""
     
     override init() {
         super.init()
     }
     
-    init(_ contact:TwitPost) {
+    init(_ post:TwitPost) {
         super.init()
-        postID = contact.postID
-        postContent = contact.postContent
+        postID = post.postID
+        postSubTitle = post.postSubTitle
+        postContent = post.postContent
     }
     
     public func printOut() {
         print("Post ID:  + \(postID)")
-        print("Name: " + postContent)
+        print("Post Sub Title: " + postSubTitle)
+        print("Post Content: " + postContent)
         print("=======================\n")
     }
 

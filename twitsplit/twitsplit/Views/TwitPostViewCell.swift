@@ -11,6 +11,7 @@ import UIKit
 class TwitPostViewCell: UITableViewCell {
 
     @IBOutlet weak var postAvatar:UIImageView!
+    @IBOutlet weak var postSubLabel:UILabel!
     @IBOutlet weak var postContent:UILabel!
     
     override func awakeFromNib() {
@@ -26,6 +27,7 @@ class TwitPostViewCell: UITableViewCell {
     
     var post:TwitPost? {
         didSet {
+            postSubLabel.text = post!.postSubTitle
             postContent.text = post!.postContent
         }
     }
