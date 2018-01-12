@@ -113,10 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				99E8CF042008747500A88FAC /* AppDelegate.swift */,
-				99E8CF062008747500A88FAC /* ViewController.swift */,
-				99E8CF082008747500A88FAC /* Main.storyboard */,
+				99E8CF37200880DF00A88FAC /* StoryBoard */,
+				99E8CF36200880C400A88FAC /* Controllers */,
+				99E8CF33200880C400A88FAC /* Manager */,
+				99E8CF35200880C400A88FAC /* Model */,
+				99E8CF34200880C400A88FAC /* Views */,
 				99E8CF0B2008747500A88FAC /* Assets.xcassets */,
-				99E8CF0D2008747500A88FAC /* LaunchScreen.storyboard */,
 				99E8CF102008747500A88FAC /* Info.plist */,
 			);
 			path = twitsplit;
@@ -138,6 +140,44 @@
 				99E8CF262008747500A88FAC /* Info.plist */,
 			);
 			path = twitsplitUITests;
+			sourceTree = "<group>";
+		};
+		99E8CF33200880C400A88FAC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		99E8CF34200880C400A88FAC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		99E8CF35200880C400A88FAC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		99E8CF36200880C400A88FAC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				99E8CF062008747500A88FAC /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		99E8CF37200880DF00A88FAC /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				99E8CF082008747500A88FAC /* Main.storyboard */,
+				99E8CF0D2008747500A88FAC /* LaunchScreen.storyboard */,
+			);
+			path = StoryBoard;
 			sourceTree = "<group>";
 		};
 		D0C5614005D9D85A86507BC8 /* Pods */ = {
