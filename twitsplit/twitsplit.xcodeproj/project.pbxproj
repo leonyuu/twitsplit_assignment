@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF042008747500A88FAC /* AppDelegate.swift */; };
-		99E8CF072008747500A88FAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF062008747500A88FAC /* ViewController.swift */; };
+		99E8CF072008747500A88FAC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF062008747500A88FAC /* MainViewController.swift */; };
 		99E8CF0A2008747500A88FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CF082008747500A88FAC /* Main.storyboard */; };
 		99E8CF0C2008747500A88FAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CF0B2008747500A88FAC /* Assets.xcassets */; };
 		99E8CF0F2008747500A88FAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CF0D2008747500A88FAC /* LaunchScreen.storyboard */; };
 		99E8CF1A2008747500A88FAC /* twitsplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF192008747500A88FAC /* twitsplitTests.swift */; };
 		99E8CF252008747500A88FAC /* twitsplitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF242008747500A88FAC /* twitsplitUITests.swift */; };
+		99E8CF3920088C1000A88FAC /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF3820088C1000A88FAC /* Globals.swift */; };
 		D43ABA6317CA5A05C50087B8 /* Pods_twitsplit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B82CD89098C9F3B534F534F /* Pods_twitsplit.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +41,7 @@
 		8DF96A0B481E0278FDA42B78 /* Pods-twitsplit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitsplit.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitsplit/Pods-twitsplit.release.xcconfig"; sourceTree = "<group>"; };
 		99E8CF012008747500A88FAC /* twitsplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitsplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CF042008747500A88FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99E8CF062008747500A88FAC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		99E8CF062008747500A88FAC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		99E8CF092008747500A88FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99E8CF0B2008747500A88FAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99E8CF0E2008747500A88FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		99E8CF202008747500A88FAC /* twitsplitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = twitsplitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CF242008747500A88FAC /* twitsplitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitsplitUITests.swift; sourceTree = "<group>"; };
 		99E8CF262008747500A88FAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99E8CF3820088C1000A88FAC /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				99E8CF35200880C400A88FAC /* Model */,
 				99E8CF34200880C400A88FAC /* Views */,
 				99E8CF0B2008747500A88FAC /* Assets.xcassets */,
+				99E8CF3820088C1000A88FAC /* Globals.swift */,
 				99E8CF102008747500A88FAC /* Info.plist */,
 			);
 			path = twitsplit;
@@ -166,7 +169,7 @@
 		99E8CF36200880C400A88FAC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				99E8CF062008747500A88FAC /* ViewController.swift */,
+				99E8CF062008747500A88FAC /* MainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -374,8 +377,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99E8CF072008747500A88FAC /* ViewController.swift in Sources */,
+				99E8CF072008747500A88FAC /* MainViewController.swift in Sources */,
 				99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */,
+				99E8CF3920088C1000A88FAC /* Globals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
