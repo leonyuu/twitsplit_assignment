@@ -13,19 +13,32 @@ class MainViewController: UIViewController {
     // MARK: - Variables
     let cellID = "TWIT_POST_CELL"
     var twitPostList:[TwitPost] = []
+    var twitAddPostView:TwitAddPostView?
     
     // MARK: - Outlets
     @IBOutlet weak var twitPostTableView:UITableView!
     
     // MARK: - Actions
     @IBAction func onTapPostButton() {
-        
+        if (twitAddPostView != nil) {
+            twitAddPostView!.setContentDialog("Cancel",
+                                              "Post",
+                                              cancelHandler: { // Tap Cancel
+                                                self.twitAddPostView!.dismissView()
+                                                
+            }, confirmHandler: { // Tap Confirm
+                self.twitAddPostView!.dismissView()
+                
+            })
+            twitAddPostView!.showViewinSuperView(self.view)
+        }
     }
     
     // MARK: - View Controllers
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUpAddTwitPostView()
         setUpPostTableView()
         loadData()
     }
@@ -39,6 +52,15 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Support Functions
+    private func setUpAddTwitPostView() {
+        if (twitAddPostView == nil) {
+            twitAddPostView = TwitAddPostView(frame: CGRect(x: 0,
+                                                            y: 0,
+                                                            width: ScreenSize.SCREEN_WIDTH,
+                                                            height: ScreenSize.SCREEN_HEIGHT))
+        }
+    }
+    
     private func setUpPostTableView() {
         twitPostTableView.rowHeight = UITableViewAutomaticDimension
     }

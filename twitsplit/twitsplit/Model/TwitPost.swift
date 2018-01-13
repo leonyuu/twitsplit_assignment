@@ -11,6 +11,7 @@ import UIKit
 class TwitPost: NSObject {
     
     public var postID:Int32 = 0
+    public var postTimeStamp:String = ""
     public var postSubTitle:String = ""
     public var postContent:String = ""
     
