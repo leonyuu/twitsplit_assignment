@@ -13,7 +13,6 @@ extension TwitPostData {
     
     @NSManaged internal var postID:NSNumber?
     @NSManaged internal var postTimeStamp:NSNumber?
-    @NSManaged internal var postSubTitle:String?
     @NSManaged internal var postContent:String?
     
 }

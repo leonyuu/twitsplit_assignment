@@ -193,6 +193,10 @@ class TwitAddPostView: UIView {
         confirmHandler()
     }
     
+    public func getCurrentPostContent() -> String {
+        return inputTextField.text
+    }
+    
 }
 
 // MARK: - UI Text View Delegate

@@ -35,7 +35,7 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-HQ-O1l">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OL7-HQ-O1l" userLabel="Add Post Button">
                                         <rect key="frame" x="331" y="0.0" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="OL7-HQ-O1l" secondAttribute="height" id="iS5-l0-Q6O"/>
@@ -45,13 +45,27 @@
                                             <action selector="onTapPostButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="QTc-af-cRM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HD-yH-8j0" userLabel="Reset">
+                                        <rect key="frame" x="5" y="0.0" width="64.5" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8HD-yH-8j0" secondAttribute="height" multiplier="1.5:1" id="sUN-sb-i72"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="onTapResetButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Bm-Q3-xeK"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="8HD-yH-8j0" firstAttribute="top" secondItem="E9N-hW-59r" secondAttribute="top" id="7Pi-LF-Qfj"/>
                                     <constraint firstItem="OL7-HQ-O1l" firstAttribute="height" secondItem="E9N-hW-59r" secondAttribute="height" id="84C-Ro-UO6"/>
                                     <constraint firstAttribute="trailing" secondItem="kf8-45-nH9" secondAttribute="trailing" constant="50" id="ChI-M3-sCE"/>
                                     <constraint firstAttribute="trailing" secondItem="OL7-HQ-O1l" secondAttribute="trailing" id="LF7-cH-h6n"/>
+                                    <constraint firstItem="8HD-yH-8j0" firstAttribute="leading" secondItem="E9N-hW-59r" secondAttribute="leading" constant="5" id="PbW-ZN-Zsw"/>
                                     <constraint firstItem="kf8-45-nH9" firstAttribute="centerY" secondItem="E9N-hW-59r" secondAttribute="centerY" id="ROn-Dt-b0T"/>
+                                    <constraint firstItem="rWs-zV-zrV" firstAttribute="top" secondItem="8HD-yH-8j0" secondAttribute="bottom" id="UUR-Xl-Brf"/>
                                     <constraint firstAttribute="trailing" secondItem="rWs-zV-zrV" secondAttribute="trailing" id="Ytj-CK-QMI"/>
                                     <constraint firstAttribute="bottom" secondItem="rWs-zV-zrV" secondAttribute="bottom" id="cQ7-5b-Yfu"/>
                                     <constraint firstItem="rWs-zV-zrV" firstAttribute="leading" secondItem="E9N-hW-59r" secondAttribute="leading" id="dSn-ed-qYl"/>

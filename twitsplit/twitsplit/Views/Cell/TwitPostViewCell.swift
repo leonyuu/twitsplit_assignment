@@ -28,7 +28,7 @@ class TwitPostViewCell: UITableViewCell {
     var post:TwitPost? {
         didSet {
             postSubLabel.text = Utils.convertTimefromTimeStamp(post!.postTimeStamp)
-            postContent.text = post!.postSubTitle.isEmpty ? post!.postContent: post!.postSubTitle + " " + post!.postContent
+            postContent.text = post!.postContent
         }
     }
 

@@ -22,7 +22,6 @@ class TwitPostData: NSManagedObject {
         
         postID = NSNumber(value: item.postID)
         postTimeStamp = NSNumber(value: item.postTimeStamp)
-        postSubTitle = item.postSubTitle
         postContent = item.postContent
         
     }
@@ -44,7 +43,6 @@ class TwitPostData: NSManagedObject {
         let post = TwitPost.init()
         post.postID = postID!.int32Value
         post.postTimeStamp = postTimeStamp!.doubleValue
-        post.postSubTitle = postSubTitle!
         post.postContent = postContent!
         return post
     }
