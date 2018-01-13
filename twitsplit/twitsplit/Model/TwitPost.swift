@@ -11,7 +11,7 @@ import UIKit
 class TwitPost: NSObject {
     
     public var postID:Int32 = 0
-    public var postTimeStamp:String = ""
+    public var postTimeStamp:Double = 0
     public var postSubTitle:String = ""
     public var postContent:String = ""
     
@@ -22,14 +22,16 @@ class TwitPost: NSObject {
     init(_ post:TwitPost) {
         super.init()
         postID = post.postID
+        postTimeStamp = post.postTimeStamp
         postSubTitle = post.postSubTitle
         postContent = post.postContent
     }
     
     public func printOut() {
-        print("Post ID:  + \(postID)")
-        print("Post Sub Title: " + postSubTitle)
-        print("Post Content: " + postContent)
+        printDebug(message: "Post ID:  + \(postID)")
+        printDebug(message: "Post Time Stamp: + \(postTimeStamp)")
+        printDebug(message: "Post Sub Title: " + postSubTitle)
+        printDebug(message: "Post Content: " + postContent)
         print("=======================\n")
     }
 
