@@ -11,7 +11,7 @@ import CoreData
 
 class DataBaseManager: NSObject {
     
-    static func cleanDataBase() {
+    public static func cleanDataBase() {
         let app = UIApplication.shared.delegate as! AppDelegate
         let managedContext = app.managedObjectContext
         let entityNamesArray = ["TwitPostData"]
@@ -33,7 +33,7 @@ class DataBaseManager: NSObject {
         }
     }
     
-    static func cleanTable(tableName: String) {
+    public static func cleanTable(tableName: String) {
         let app = UIApplication.shared.delegate as! AppDelegate
         let managedContext = app.managedObjectContext
         
@@ -52,7 +52,7 @@ class DataBaseManager: NSObject {
         }
     }
     
-    static func deleteObjectsByIds(ids: [Int], entity: String, propertyName: String) {
+    public static func deleteObjectsByIds(ids: [Int], entity: String, propertyName: String) {
         var numberIds = [NSNumber]()
         for id in ids{
             numberIds.append(NSNumber(value: id))
@@ -75,7 +75,7 @@ class DataBaseManager: NSObject {
     }
     
     // MARK: - Twit Post Data
-    static func getTwitPostDataById(id: Int) -> TwitPostData? {
+    public static func getTwitPostDataById(id: Int) -> TwitPostData? {
         let app = UIApplication.shared.delegate as! AppDelegate
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TwitPostData")
         request.returnsObjectsAsFaults = false
@@ -91,7 +91,7 @@ class DataBaseManager: NSObject {
         return nil
     }
     
-    static func getAllTwistPostData() -> [TwitPostData]?{
+    public static func getAllTwistPostData() -> [TwitPostData]?{
         let app = UIApplication.shared.delegate as! AppDelegate
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TwitPostData")
         request.returnsObjectsAsFaults = false

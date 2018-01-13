@@ -15,6 +15,7 @@
 		9961FFF6200A0866003156A8 /* TwitPostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9961FFF4200A0866003156A8 /* TwitPostData.swift */; };
 		9961FFF8200A0C02003156A8 /* TwitPostData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9961FFF7200A0C02003156A8 /* TwitPostData+CoreDataProperties.swift */; };
 		9961FFFA200A1341003156A8 /* DataBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9961FFF9200A1341003156A8 /* DataBaseManager.swift */; };
+		9961FFFC200A6215003156A8 /* TwitPostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9961FFFB200A6215003156A8 /* TwitPostManager.swift */; };
 		99E5B2F22008AF2C008CB686 /* TwitPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E5B2F12008AF2C008CB686 /* TwitPost.swift */; };
 		99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF042008747500A88FAC /* AppDelegate.swift */; };
 		99E8CF072008747500A88FAC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF062008747500A88FAC /* MainViewController.swift */; };
@@ -56,6 +57,7 @@
 		9961FFF4200A0866003156A8 /* TwitPostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitPostData.swift; sourceTree = "<group>"; };
 		9961FFF7200A0C02003156A8 /* TwitPostData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TwitPostData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9961FFF9200A1341003156A8 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
+		9961FFFB200A6215003156A8 /* TwitPostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitPostManager.swift; sourceTree = "<group>"; };
 		99E5B2F12008AF2C008CB686 /* TwitPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitPost.swift; sourceTree = "<group>"; };
 		99E8CF012008747500A88FAC /* Twit Split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twit Split.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CF042008747500A88FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9961FFF9200A1341003156A8 /* DataBaseManager.swift */,
+				9961FFFB200A6215003156A8 /* TwitPostManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				9961FFF6200A0866003156A8 /* TwitPostData.swift in Sources */,
 				9961FFF8200A0C02003156A8 /* TwitPostData+CoreDataProperties.swift in Sources */,
 				9961FFF02009FC4E003156A8 /* TwitPost.xcdatamodeld in Sources */,
+				9961FFFC200A6215003156A8 /* TwitPostManager.swift in Sources */,
 				99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */,
 				992644B82009BCB000210242 /* TwitAddPostView.swift in Sources */,
 				99E8CF3920088C1000A88FAC /* Globals.swift in Sources */,

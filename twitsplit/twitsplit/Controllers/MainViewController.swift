@@ -52,7 +52,7 @@ class MainViewController: UIViewController {
         setUpAddTwitPostView()
         
         // Fetch Current Data Twit Post Table View
-        loadData()
+        loadTwitPostData()
         
     }
 
@@ -74,6 +74,18 @@ class MainViewController: UIViewController {
         }
     }
     
+    private func loadTwitPostData() {
+        TwitPostManager.fecthAllPostData(completion: { (postList,state) -> Void in
+            if (postList != nil && state) {
+                self.twitPostList = postList!
+                self.twitPostTableView.reloadData()
+                if (!self.twitPostList.isEmpty) {
+                    self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
+                }
+            }
+        })
+    }
+    
     private func saveNewTwitPostData(_ postContent:String) {
         // Create New Post Data
         let post = TwitPost.init()
@@ -82,53 +94,14 @@ class MainViewController: UIViewController {
         post.printOut()
         
         // Save to Data Base
-        TwitPostData.init(post).saveToDataBase()
-        
-        // Refresh Current List
-        self.twitPostList.append(post)
-        self.twitPostTableView.reloadData()
-        if (!self.twitPostList.isEmpty) {
-            self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
-        }
-    }
-    
-    private func loadData() {
-        let didFirstTimeInit = UserDefaults.standard.bool(forKey: "DID_FIRST_TIME_INIT")
-        let postArray = DataBaseManager.getAllTwistPostData()
-        if (postArray != nil) {
-            for i in 0...(postArray!.count - 1) {
-                twitPostList.append(postArray![i].convertValueToTwitPostObject())
+        TwitPostManager.postNewData(post,completion: { (state) -> Void in
+            // Refresh Current List
+            self.twitPostList.append(post)
+            self.twitPostTableView.reloadData()
+            if (!self.twitPostList.isEmpty) {
+                self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
             }
-        } else {
-            if (!didFirstTimeInit) {
-                UserDefaults.standard.set(true, forKey: "DID_FIRST_TIME_INIT")
-                initWelcomeData()
-            }
-        }
-        twitPostTableView.reloadData()
-        if (!self.twitPostList.isEmpty) {
-            self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
-        }
-    }
-    
-    private func initWelcomeData() {
-        var post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "Welcome to TwitSplit!"
-        TwitPostData.init(post).saveToDataBase()
-        twitPostList.append(post)
-        
-        post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "1/2 I can't believe Tweeter now supports chunking"
-        TwitPostData.init(post).saveToDataBase()
-        twitPostList.append(post)
-        
-        post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "2/2 my messages, so I don't have to do it myself."
-        TwitPostData.init(post).saveToDataBase()
-        twitPostList.append(post)
+        })
     }
     
 }
