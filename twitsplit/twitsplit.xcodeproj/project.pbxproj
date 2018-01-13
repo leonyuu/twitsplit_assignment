@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		992644B82009BCB000210242 /* TwitAddPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992644B72009BCAF00210242 /* TwitAddPostView.swift */; };
+		9961FFE92009DE05003156A8 /* TwitPostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9961FFE82009DE05003156A8 /* TwitPostViewCell.swift */; };
 		99E5B2F22008AF2C008CB686 /* TwitPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E5B2F12008AF2C008CB686 /* TwitPost.swift */; };
-		99E5B2F42008C2BA008CB686 /* TwitPostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E5B2F32008C2BA008CB686 /* TwitPostViewCell.swift */; };
 		99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF042008747500A88FAC /* AppDelegate.swift */; };
 		99E8CF072008747500A88FAC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E8CF062008747500A88FAC /* MainViewController.swift */; };
 		99E8CF0A2008747500A88FAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99E8CF082008747500A88FAC /* Main.storyboard */; };
@@ -43,8 +43,8 @@
 		4B82CD89098C9F3B534F534F /* Pods_twitsplit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_twitsplit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DF96A0B481E0278FDA42B78 /* Pods-twitsplit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitsplit.release.xcconfig"; path = "Pods/Target Support Files/Pods-twitsplit/Pods-twitsplit.release.xcconfig"; sourceTree = "<group>"; };
 		992644B72009BCAF00210242 /* TwitAddPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitAddPostView.swift; sourceTree = "<group>"; };
+		9961FFE82009DE05003156A8 /* TwitPostViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitPostViewCell.swift; sourceTree = "<group>"; };
 		99E5B2F12008AF2C008CB686 /* TwitPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitPost.swift; sourceTree = "<group>"; };
-		99E5B2F32008C2BA008CB686 /* TwitPostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitPostViewCell.swift; sourceTree = "<group>"; };
 		99E8CF012008747500A88FAC /* Twit Split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twit Split.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CF042008747500A88FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E8CF062008747500A88FAC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +93,14 @@
 				4B82CD89098C9F3B534F534F /* Pods_twitsplit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9961FFE72009DDEA003156A8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9961FFE82009DE05003156A8 /* TwitPostViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		99E8CEF82008747500A88FAC = {
@@ -161,8 +169,8 @@
 		99E8CF34200880C400A88FAC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9961FFE72009DDEA003156A8 /* Cell */,
 				992644B72009BCAF00210242 /* TwitAddPostView.swift */,
-				99E5B2F32008C2BA008CB686 /* TwitPostViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -386,10 +394,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9961FFE92009DE05003156A8 /* TwitPostViewCell.swift in Sources */,
 				99E8CF072008747500A88FAC /* MainViewController.swift in Sources */,
 				99E8CF052008747500A88FAC /* AppDelegate.swift in Sources */,
 				992644B82009BCB000210242 /* TwitAddPostView.swift in Sources */,
-				99E5B2F42008C2BA008CB686 /* TwitPostViewCell.swift in Sources */,
 				99E8CF3920088C1000A88FAC /* Globals.swift in Sources */,
 				99E5B2F22008AF2C008CB686 /* TwitPost.swift in Sources */,
 			);

@@ -10,6 +10,7 @@ import UIKit
 
 class TwitAddPostView: UIView {
     
+    // MARK: - Variables
     var numInputText:UILabel!
     var inputTextField:UITextView!
     var cancelBtn:UIButton!
@@ -18,6 +19,7 @@ class TwitAddPostView: UIView {
     var confirmHandler:() -> Void = {}
     let aninationTime:TimeInterval = 0.3
     
+    // MARK: - View
     override init(frame: CGRect) {
         super.init(frame: frame)
         createLayout()
@@ -27,19 +29,20 @@ class TwitAddPostView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func createLayout() {
+    // MARK: - Support Functions
+    private func createLayout() {
         
         // Set Background for View
         self.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
         
         // Dismiss view when touch on screen
-        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(dismissView))
+        let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapCancel))
         tapRecognizer.cancelsTouchesInView = true
         self.addGestureRecognizer(tapRecognizer)
         
         // Add Content View
         let contentWidth = self.frame.size.width * (560.0/640.0)
-        let contentHeight = contentWidth * (300.0/400.0)
+        let contentHeight = contentWidth * (350.0/400.0)
         let margin = (self.frame.size.width - contentWidth)/2.0
         let contentView = UIView(frame: CGRect(x: margin,
                                                y: margin,
@@ -72,6 +75,7 @@ class TwitAddPostView: UIView {
         inputTextField.textColor = UIColor.darkGray
         inputTextField.font = UIFont.systemFont(ofSize: 15)
         inputTextField.keyboardType = UIKeyboardType.twitter
+        inputTextField.delegate = self
         contentView.addSubview(inputTextField)
         
         // Add Button View
@@ -126,7 +130,7 @@ class TwitAddPostView: UIView {
         
     }
     
-    func showViewinSuperView(_ superview:UIView) {
+    public func showViewinSuperView(_ superview:UIView) {
         if self.superview == nil {
             superview.addSubview(self)
         } else {
@@ -143,10 +147,11 @@ class TwitAddPostView: UIView {
                             
         }) { (completed) in
             // Completed Transition
+            self.inputTextField.becomeFirstResponder()
         }
     }
     
-    @objc func dismissView() {
+    public func dismissView() {
         UIView.transition(with: self,
                           duration: aninationTime,
                           options: UIViewAnimationOptions.transitionCrossDissolve,
@@ -158,7 +163,7 @@ class TwitAddPostView: UIView {
         }
     }
     
-    func setContentDialog(_ cancelText:String?,
+    public func setContentDialog(_ cancelText:String?,
                           _ confirmText:String?,
                            cancelHandler:@escaping () -> Void,
                            confirmHandler:@escaping () -> Void) {
@@ -174,25 +179,27 @@ class TwitAddPostView: UIView {
         self.confirmHandler = confirmHandler
     }
     
-    func dismissKeyBoard() {
+    private func dismissKeyBoard() {
         self.endEditing(true)
     }
     
-    @objc func tapCancel() {
+    @objc private func tapCancel() {
         dismissKeyBoard()
         cancelHandler()
     }
     
-    @objc func tapConfirm() {
+    @objc private func tapConfirm() {
         dismissKeyBoard()
         confirmHandler()
     }
     
 }
 
+// MARK: - UI Text View Delegate
 extension TwitAddPostView:UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
+        let length = inputTextField.text.count - range.length + text.count
+        numInputText.text = "\(length)"
         return true
     }
 }
