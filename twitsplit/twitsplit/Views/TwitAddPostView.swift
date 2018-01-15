@@ -189,8 +189,11 @@ class TwitAddPostView: UIView {
     }
     
     @objc private func tapConfirm() {
-        dismissKeyBoard()
-        confirmHandler()
+        let postContent = inputTextField.text.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (!postContent.isEmpty) { // Handle Only Whitespace and Breakline input Content
+            dismissKeyBoard()
+            confirmHandler()
+        }
     }
     
     public func getCurrentPostContent() -> String {

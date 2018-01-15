@@ -41,39 +41,59 @@ class TwitPostManager: NSObject {
     }
     
     // Post New Post Data
-    public static func postNewData(_ post:TwitPost, completion:@escaping (Bool) -> Void) {
-        SVProgressHUD.setDefaultMaskType(.black)
-        SVProgressHUD.show(withStatus: "Posting...")
+    public static func postNewData(_ postContent:String, completion:@escaping ([TwitPost],Bool) -> Void) {
         
-        TwitPostData.init(post).saveToDataBase()
-        let when = DispatchTime.now() + 0.3
-        DispatchQueue.main.asyncAfter(deadline: when, execute: {
-            completion(true)
-            SVProgressHUD.dismiss()
-        })
+        var postList:[TwitPost] = []
+        Utils.splitContent(postContent) { (results, state) in
+            printDebug(message: "Results: \(results) - State: \(state)")
+            if (state) { // Split String Successfully
+                SVProgressHUD.setDefaultMaskType(.black)
+                SVProgressHUD.show(withStatus: "Posting...")
+                
+                for i in 0..<results.count {
+                    let post = TwitPost.init()
+                    post.postTimeStamp = Utils.getCurrentTime()
+                    post.postContent = results[i]
+                    postList.append(post)
+                    TwitPostData.init(post).saveToDataBase()
+                }
+                
+                let when = DispatchTime.now() + 0.3
+                DispatchQueue.main.asyncAfter(deadline: when, execute: {
+                    completion(postList,state)
+                    SVProgressHUD.dismiss()
+                })
+                
+            } else { // Error Occurs
+                SVProgressHUD.showError(withStatus: results[0])
+                completion(postList,state)
+            }
+        }
     }
     
     // Init First Welcome Data, if needed
     private static func initWelcomeData() -> [TwitPost]! {
+        
+        let initString = ["Welcome to TwitSplit!","I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself."]
+        
         var postList:[TwitPost] = []
         
-        var post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "Welcome to TwitSplit!"
-        TwitPostData.init(post).saveToDataBase()
-        postList.append(post)
-        
-        post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "1/2 I can't believe Tweeter now supports chunking"
-        TwitPostData.init(post).saveToDataBase()
-        postList.append(post)
-        
-        post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = "2/2 my messages, so I don't have to do it myself."
-        TwitPostData.init(post).saveToDataBase()
-        postList.append(post)
+        for string in initString {
+            Utils.splitContent(string) { (results, state) in
+                printDebug(message: "Results: \(results) - State: \(state)")
+                if (state) { // Split String Successfully
+                    
+                    for i in 0..<results.count {
+                        let post = TwitPost.init()
+                        post.postTimeStamp = Utils.getCurrentTime()
+                        post.postContent = results[i]
+                        postList.append(post)
+                        TwitPostData.init(post).saveToDataBase()
+                    }
+                    
+                }
+            }
+        }
         
         return postList
     }

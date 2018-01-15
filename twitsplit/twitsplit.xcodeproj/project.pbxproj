@@ -59,7 +59,7 @@
 		9961FFF9200A1341003156A8 /* DataBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataBaseManager.swift; sourceTree = "<group>"; };
 		9961FFFB200A6215003156A8 /* TwitPostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitPostManager.swift; sourceTree = "<group>"; };
 		99E5B2F12008AF2C008CB686 /* TwitPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitPost.swift; sourceTree = "<group>"; };
-		99E8CF012008747500A88FAC /* Twit Split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Twit Split.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99E8CF012008747500A88FAC /* TwitSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99E8CF042008747500A88FAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99E8CF062008747500A88FAC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		99E8CF092008747500A88FAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		99E8CF022008747500A88FAC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99E8CF012008747500A88FAC /* Twit Split.app */,
+				99E8CF012008747500A88FAC /* TwitSplit.app */,
 				99E8CF152008747500A88FAC /* twitsplitTests.xctest */,
 				99E8CF202008747500A88FAC /* twitsplitUITests.xctest */,
 			);
@@ -267,7 +267,7 @@
 			);
 			name = twitsplit;
 			productName = twitsplit;
-			productReference = 99E8CF012008747500A88FAC /* Twit Split.app */;
+			productReference = 99E8CF012008747500A88FAC /* TwitSplit.app */;
 			productType = "com.apple.product-type.application";
 		};
 		99E8CF142008747500A88FAC /* twitsplitTests */ = {
@@ -615,7 +615,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.twitsplit;
-				PRODUCT_NAME = "Twit Split";
+				PRODUCT_NAME = TwitSplit;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -631,7 +631,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobile.twitsplit;
-				PRODUCT_NAME = "Twit Split";
+				PRODUCT_NAME = TwitSplit;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

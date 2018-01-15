@@ -10,6 +10,7 @@ import UIKit
 
 class Utils: NSObject {
 
+    // MARK: - Time
     public static func getCurrentTime() -> Double{
         let date = Date.init()
         return date.timeIntervalSince1970 // Get Current Time Stamp from 1970
@@ -37,6 +38,91 @@ class Utils: NSObject {
         let timeString = dateFormatter.string(from: date)
         
         return dateString + ", " + timeString
+    }
+    
+    // MARK: - Split Content
+    static func splitContent(_ postContent: String, completion:@escaping ([String],Bool) -> Void) {
+        let limit = 50;
+        let errorMessage = "The message contains a span of non-whitespace characters longer than \(limit) characters"
+        let results = split(postContent, limitCharacters: limit)
+        let state = !(results.count == 1 && results[0] == errorMessage)
+        completion(results, state)
+    }
+    
+    static func split(_ input: String, limitCharacters: Int) -> [String] {
+        
+        // Remove redudant white space and lines
+        let components = input.components(separatedBy: .whitespacesAndNewlines)
+        let filterMessage = components.filter { !$0.isEmpty }.joined(separator: " ")
+        
+        // Return message if its length is less than or equal limit
+        if (filterMessage.count <= limitCharacters) {
+            return [filterMessage]
+        }
+        
+        // Calculate total partial
+        let totalPartial: Int = (filterMessage.count / limitCharacters) + (filterMessage.count % limitCharacters > 0 ? 1 : 0)
+        
+        // Separate sentences into words by remove whitespaces and new lines
+        let words = filterMessage.components(separatedBy: .whitespacesAndNewlines)
+        
+        // Check error, if available words have length that greater than limit
+        let errorWords = words.filter { return $0.count > limitCharacters }
+        
+        // Return error if the length is great than limit and contains non-whitespace
+        if !errorWords.isEmpty {
+            return ["The message contains a span of non-whitespace characters longer than \(limitCharacters) characters"]
+        }
+        
+        // Return message
+        return conbinePartial(words, totalPartial: totalPartial, limitCharacters: limitCharacters)
+    }
+    
+    static func conbinePartial(_ words: [String], totalPartial: Int, limitCharacters: Int) -> [String] {
+        
+        var results:[String] = []
+        var lastCurrentIndex = 0 // Use to keep track the word index when appeding to partial
+        
+        // Loop by partial step
+        for i in 0...totalPartial - 1 {
+            
+            // Init partial content for every step
+            var partial = "\(i + 1)/\(totalPartial) "
+            
+            // For every step, we append the words, keep track current index and count the length of partial
+            // If the partial length is equal or over the limit characters, we stop and move to another partial step
+            let nextStepIndex = lastCurrentIndex + (i != 0 && lastCurrentIndex < words.count - 1 ? 1:0)
+            for index in nextStepIndex...words.count - 1 {
+                
+                // Get Item
+                let item = words[index]
+                
+                // Break loop if length is over than limit
+                // (+ 1 because the last whitespace before trimming)
+                let length = partial.count + item.count + 1
+                if (length >= limitCharacters + 1) {
+                    break;
+                }
+                
+                // Append word to partial
+                partial += item + " "
+                
+                // Store current index to know the last word
+                lastCurrentIndex = index
+            }
+            
+            // Add to results
+            results.append(partial.trimmingCharacters(in: .whitespaces))
+            
+        }
+        
+        //Applied recursive to re-calculate total partials
+        if lastCurrentIndex < words.count - 1 {
+            let total = totalPartial + 1
+            results = conbinePartial(words, totalPartial: total, limitCharacters: limitCharacters)
+        }
+        
+        return results
     }
     
 }

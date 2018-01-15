@@ -22,11 +22,10 @@ class MainViewController: UIViewController {
     @IBAction func onTapResetButton() {
         // Clear Current Data Base
         DataBaseManager.cleanDataBase()
-        
+
         // Clear List
         twitPostList = []
-        twitPostTableView.reloadData()
-        
+        twitPostTableView.reloadData()        
     }
     
     @IBAction func onTapPostButton() {
@@ -87,19 +86,18 @@ class MainViewController: UIViewController {
     }
     
     private func saveNewTwitPostData(_ postContent:String) {
-        // Create New Post Data
-        let post = TwitPost.init()
-        post.postTimeStamp = Utils.getCurrentTime()
-        post.postContent = postContent
-        post.printOut()
         
         // Save to Data Base
-        TwitPostManager.postNewData(post,completion: { (state) -> Void in
-            // Refresh Current List
-            self.twitPostList.append(post)
-            self.twitPostTableView.reloadData()
-            if (!self.twitPostList.isEmpty) {
-                self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
+        TwitPostManager.postNewData(postContent,completion: { (postlist,state) -> Void in
+            if (state) {
+                // Refresh Current List
+                for post in postlist {
+                    self.twitPostList.append(post)
+                }
+                self.twitPostTableView.reloadData()
+                if (!self.twitPostList.isEmpty) {
+                    self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
+                }
             }
         })
     }
