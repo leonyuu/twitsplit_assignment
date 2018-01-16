@@ -18,5 +18,18 @@
 - and it would return
 - ["1/2 I can't believe Tweeter now supports chunking", "2/2 my messages, so I don't have to do it myself."]
 
+## System
+- iOS >= 10
+- Swift 4.0
+
+## What I've done
+- Application with UI input and show list of message.
+- Split algorithm.
+- Unit test for Split Message Function.
+- Documentation.
+
 ## App Demonstration
+https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif
+
+
 
