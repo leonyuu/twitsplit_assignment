@@ -1,4 +1,4 @@
-# Assignment -  Project TwitSplit
+# Project TwitSplit Assignment
 - Interview project for applying iOS position.
 - The product Tweeter allows users to post short messages limited to 50 characters each.
 - Sometimes, users get excited and write messages longer than 50 characters.
@@ -34,10 +34,10 @@
 - **# 3:** Calculate total partial (temp estimation partial, we will fix it later at the render part ) then separate input message into array of words.
 - **# 4:** For each partial we add word by word to it, if partial's length is over than limit, break loop then store current index where the last word is appended and move to another parital step. If still having remains words, we apply render part again else we return the expected result.
 
-- Check implementation here: [`split` function](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplit/Utils/Utils.swift)  `split` function
+- Check implementation [`split` function](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplit/Utils/Utils.swift)
 
 ## Unit Test Cases
-- Some basic [test cases](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplitTests/twitsplitTests.swift), can be found here.
+- Some basic [test cases](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplitTests/twitsplitTests.swift) can be found here.
 
 ## App Demonstration
 ![alt text](https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif)
