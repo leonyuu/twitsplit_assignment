@@ -34,7 +34,7 @@
 - **# 3:** Calculate total partial (temp estimation partial, we will fix it later at the render part ) then separate input message into array of words.
 - **# 5:** For each partial we add word by word to it, if partial's length is over than limit, break loop then store current index where the last word is appended and move to another parital step. If still having remains words, we apply render part again else we return the expected result.
 
-[Checkout](https://github.com/leonyuu/twitsplit_assignment/tree/master/twitsplit/twitsplit/Utils)  `split` function
+[Checkout](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplit/Utils/Utils.swift)  `split` function
 
 ## Unit Test Cases
 - Some basic test cases, can be found here
