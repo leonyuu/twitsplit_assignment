@@ -23,10 +23,22 @@
 - Swift 4.0
 
 ## What I've done
-- Application with UI input and show list of message.
+- Application with text input and a list of messages.
 - Split algorithm.
 - Unit test for Split Message Function.
 - Documentation.
+
+## Split Function
+- **# 1:** Remove redudant whitespaces/breaklines characters from input message.
+- **# 2:** If the input message 's length is less than limit characters, we return the original one.
+- **# 3:** Calculate total partial (temp estimation partial, we will fix it later at the render part ) then separate input message into array of words.
+- **# 5:** For each partial we add word by word to it, if partial's length is over than limit, break loop then store current index where the last word is appended and move to another parital step. If still having remains words, we apply render part again else we return the expected result.
+
+[Checkout](https://github.com/leonyuu/twitsplit_assignment/tree/master/twitsplit/twitsplit/Utils)  `split` function
+
+## Unit Test Cases
+- Some basic test cases, can be found here
+[Checkout](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplitTests/twitsplitTests.swift)
 
 ## App Demonstration
 ![alt text](https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif)
