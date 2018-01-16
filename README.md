@@ -29,7 +29,7 @@
 - Documentation.
 
 ## App Demonstration
-https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif
+![alt text](https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif)
 
 
 
