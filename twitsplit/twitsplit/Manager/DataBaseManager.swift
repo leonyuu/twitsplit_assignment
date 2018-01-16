@@ -75,22 +75,6 @@ class DataBaseManager: NSObject {
     }
     
     // MARK: - Twit Post Data
-    public static func getTwitPostDataById(id: Int) -> TwitPostData? {
-        let app = UIApplication.shared.delegate as! AppDelegate
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TwitPostData")
-        request.returnsObjectsAsFaults = false
-        request.predicate = NSPredicate(format: "id == %d", id)
-        do {
-            let dataArray = try app.managedObjectContext.fetch(request) as! [TwitPostData]
-            if dataArray.count > 0 {
-                return dataArray[0]
-            }
-        } catch {
-            printDebug(message: "Error fetching Twit Post Data")
-        }
-        return nil
-    }
-    
     public static func getAllTwistPostData() -> [TwitPostData]?{
         let app = UIApplication.shared.delegate as! AppDelegate
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "TwitPostData")
