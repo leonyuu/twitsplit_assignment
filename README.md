@@ -32,13 +32,12 @@
 - **# 1:** Remove redudant whitespaces/breaklines characters from input message.
 - **# 2:** If the input message 's length is less than limit characters, we return the original one.
 - **# 3:** Calculate total partial (temp estimation partial, we will fix it later at the render part ) then separate input message into array of words.
-- **# 5:** For each partial we add word by word to it, if partial's length is over than limit, break loop then store current index where the last word is appended and move to another parital step. If still having remains words, we apply render part again else we return the expected result.
+- **# 4:** For each partial we add word by word to it, if partial's length is over than limit, break loop then store current index where the last word is appended and move to another parital step. If still having remains words, we apply render part again else we return the expected result.
 
-[Checkout](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplit/Utils/Utils.swift)  `split` function
+- Check implementation here: [`split` function](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplit/Utils/Utils.swift)  `split` function
 
 ## Unit Test Cases
-- Some basic test cases, can be found here
-[Checkout](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplitTests/twitsplitTests.swift)
+- Some basic [test cases](https://github.com/leonyuu/twitsplit_assignment/blob/master/twitsplit/twitsplitTests/twitsplitTests.swift), can be found here.
 
 ## App Demonstration
 ![alt text](https://github.com/leonyuu/twitsplit_assignment/blob/master/app_demo.gif)
