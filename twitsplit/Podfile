@@ -5,6 +5,12 @@ platform :ios, ’10.0’
 
 target 'twitsplit' do
     pod 'SVProgressHUD'
+    
+    target 'twitsplitTests' do
+        inherit! :search_paths
+        # Pods for testing
+    end
+    
 end
 
 post_install do |installer|

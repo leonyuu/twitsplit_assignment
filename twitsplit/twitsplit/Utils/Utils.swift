@@ -44,38 +44,38 @@ class Utils: NSObject {
     static func splitContent(_ postContent: String, completion:@escaping ([String],Bool) -> Void) {
         let limit = 50;
         let errorMessage = "The message contains a span of non-whitespace characters longer than \(limit) characters"
-        let results = split(postContent, limitCharacters: limit)
+        let results = split(postContent, limit: limit)
         let state = !(results.count == 1 && results[0] == errorMessage)
         completion(results, state)
     }
     
-    static func split(_ input: String, limitCharacters: Int) -> [String] {
+    static func split(_ input: String, limit: Int) -> [String] {
         
         // Remove redudant white space and lines
         let components = input.components(separatedBy: .whitespacesAndNewlines)
         let filterMessage = components.filter { !$0.isEmpty }.joined(separator: " ")
         
         // Return message if its length is less than or equal limit
-        if (filterMessage.count <= limitCharacters) {
+        if (filterMessage.count <= limit) {
             return [filterMessage]
         }
         
         // Calculate total partial
-        let totalPartial: Int = (filterMessage.count / limitCharacters) + (filterMessage.count % limitCharacters > 0 ? 1 : 0)
+        let totalPartial: Int = (filterMessage.count / limit) + (filterMessage.count % limit > 0 ? 1 : 0)
         
         // Separate sentences into words by remove whitespaces and new lines
         let words = filterMessage.components(separatedBy: .whitespacesAndNewlines)
         
         // Check error, if available words have length that greater than limit
-        let errorWords = words.filter { return $0.count > limitCharacters }
+        let errorWords = words.filter { return $0.count > limit }
         
         // Return error if the length is great than limit and contains non-whitespace
         if !errorWords.isEmpty {
-            return ["The message contains a span of non-whitespace characters longer than \(limitCharacters) characters"]
+            return ["The message contains a span of non-whitespace characters longer than \(limit) characters"]
         }
         
         // Return message
-        return conbinePartial(words, totalPartial: totalPartial, limitCharacters: limitCharacters)
+        return conbinePartial(words, totalPartial: totalPartial, limitCharacters: limit)
     }
     
     static func conbinePartial(_ words: [String], totalPartial: Int, limitCharacters: Int) -> [String] {

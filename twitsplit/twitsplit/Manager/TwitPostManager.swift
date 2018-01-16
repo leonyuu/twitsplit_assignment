@@ -28,7 +28,9 @@ class TwitPostManager: NSObject {
             } else {
                 if (!didFirstTimeInit) {
                     UserDefaults.standard.set(true, forKey: "DID_FIRST_TIME_INIT")
-                    postList = initWelcomeData()
+                    DispatchQueue.main.async(execute: {
+                        postList = initWelcomeData()
+                    })
                 }
             }
             
