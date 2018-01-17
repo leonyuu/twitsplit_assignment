@@ -100,7 +100,7 @@ class Utils: NSObject {
                 // Break loop if length is over than limit
                 // (+ 1 because the last whitespace before trimming)
                 let length = partial.count + item.count + 1
-                if (length >= limitCharacters + 1) {
+                if (length > limitCharacters + 1) {
                     break;
                 }
                 
