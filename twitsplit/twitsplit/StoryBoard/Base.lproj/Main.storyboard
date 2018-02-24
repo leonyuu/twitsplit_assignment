@@ -49,9 +49,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Reset"/>
-                                        <connections>
-                                            <action selector="onTapResetButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Bm-Q3-xeK"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="postButton" destination="OL7-HQ-O1l" id="CzG-cY-9h5"/>
+                        <outlet property="resetButton" destination="8HD-yH-8j0" id="wkT-MZ-Qyc"/>
                         <outlet property="twitPostTableView" destination="DcZ-Tz-2Us" id="bDs-cl-H6J"/>
                     </connections>
                 </viewController>

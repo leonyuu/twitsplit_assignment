@@ -20,10 +20,11 @@ class MainViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var postButton:UIButton!
+    @IBOutlet weak var resetButton:UIButton!
     @IBOutlet weak var twitPostTableView:UITableView!
     
     // MARK: - Actions
-    @IBAction func onTapResetButton() {
+    private func onResetButton() {
         // Clear Current Data Base
         DataBaseManager.cleanDataBase()
 
@@ -31,10 +32,6 @@ class MainViewController: UIViewController {
         twitPostList = []
         twitPostTableView.reloadData()
         
-    }
-    
-    @IBAction func onTapPostButton() {
-        onPostButton()
     }
     
     private func onPostButton() {
@@ -62,10 +59,16 @@ class MainViewController: UIViewController {
         // Fetch Current Data Twit Post Table View
         loadTwitPostData()
         
+        // Subscribe for Post, Reset Tap event
         postButton.rx.tap.subscribe( onNext: { [weak self] in
             guard let _ = self else {return}
             self!.onPostButton()
             }).disposed(by: disposeBag)
+        
+        resetButton.rx.tap.subscribe(onNext: { [weak self] in
+            guard let _ = self else {return}
+            self!.onResetButton()
+        }).disposed(by: disposeBag)
         
     }
 
