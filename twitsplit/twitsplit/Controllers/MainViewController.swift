@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MainViewController: UIViewController {
 
@@ -14,8 +16,10 @@ class MainViewController: UIViewController {
     let cellID = "TWIT_POST_CELL"
     var twitPostList:[TwitPost] = []
     var twitAddPostView:TwitAddPostView?
+    let disposeBag = DisposeBag()
     
     // MARK: - Outlets
+    @IBOutlet weak var postButton:UIButton!
     @IBOutlet weak var twitPostTableView:UITableView!
     
     // MARK: - Actions
@@ -25,10 +29,15 @@ class MainViewController: UIViewController {
 
         // Clear List
         twitPostList = []
-        twitPostTableView.reloadData()        
+        twitPostTableView.reloadData()
+        
     }
     
     @IBAction func onTapPostButton() {
+        onPostButton()
+    }
+    
+    private func onPostButton() {
         if (twitAddPostView != nil) {
             twitAddPostView!.setContentDialog("Cancel",
                                               "Post",
@@ -52,6 +61,11 @@ class MainViewController: UIViewController {
         
         // Fetch Current Data Twit Post Table View
         loadTwitPostData()
+        
+        postButton.rx.tap.subscribe( onNext: { [weak self] in
+            guard let _ = self else {return}
+            self!.onPostButton()
+            }).disposed(by: disposeBag)
         
     }
 

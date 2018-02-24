@@ -5,6 +5,8 @@ platform :ios, ’10.0’
 
 target 'twitsplit' do
     pod 'SVProgressHUD'
+    pod 'RxSwift',    '~> 4.0'
+    pod 'RxCocoa',    '~> 4.0'
     
     target 'twitsplitTests' do
         inherit! :search_paths

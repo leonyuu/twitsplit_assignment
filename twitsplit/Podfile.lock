@@ -1,12 +1,19 @@
 PODS:
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.1.2)
   - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SVProgressHUD
 
 SPEC CHECKSUMS:
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
+  RxSwift: e49536837d9901277638493ea537394d4b55f570
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 11f9c626e5e431eec4563e4324db2bce3bce7ba7
+PODFILE CHECKSUM: 79572408a5d5a6c19b0d2105512e0474f9d27ff1
 
 COCOAPODS: 1.2.1

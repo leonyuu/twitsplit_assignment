@@ -41,9 +41,6 @@
                                             <constraint firstAttribute="width" secondItem="OL7-HQ-O1l" secondAttribute="height" id="iS5-l0-Q6O"/>
                                         </constraints>
                                         <state key="normal" image="app_post_icon"/>
-                                        <connections>
-                                            <action selector="onTapPostButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="QTc-af-cRM"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8HD-yH-8j0" userLabel="Reset">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="43"/>
@@ -148,6 +145,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="postButton" destination="OL7-HQ-O1l" id="CzG-cY-9h5"/>
                         <outlet property="twitPostTableView" destination="DcZ-Tz-2Us" id="bDs-cl-H6J"/>
                     </connections>
                 </viewController>
