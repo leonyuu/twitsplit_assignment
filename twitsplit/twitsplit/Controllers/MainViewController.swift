@@ -14,9 +14,9 @@ class MainViewController: UIViewController {
 
     // MARK: - Variables
     let cellID = "TWIT_POST_CELL"
-    var twitPostList:[TwitPost] = []
     var twitAddPostView:TwitAddPostView?
     let disposeBag = DisposeBag()
+    let twitPostListVariable = Variable<[TwitPost]>([])
     
     // MARK: - Outlets
     @IBOutlet weak var postButton:UIButton!
@@ -29,8 +29,7 @@ class MainViewController: UIViewController {
         DataBaseManager.cleanDataBase()
 
         // Clear List
-        twitPostList = []
-        twitPostTableView.reloadData()
+        twitPostListVariable.value = []
         
     }
     
@@ -60,15 +59,30 @@ class MainViewController: UIViewController {
         loadTwitPostData()
         
         // Subscribe for Post, Reset Tap event
-        postButton.rx.tap.subscribe( onNext: { [weak self] in
+        postButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance)
+            .subscribe( onNext: { [weak self] in
             guard let _ = self else {return}
             self!.onPostButton()
             }).disposed(by: disposeBag)
         
-        resetButton.rx.tap.subscribe(onNext: { [weak self] in
+        resetButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] in
             guard let _ = self else {return}
             self!.onResetButton()
         }).disposed(by: disposeBag)
+        
+        // Subcribe for twitPostList
+        twitPostListVariable.asObservable().subscribe( onNext: { [weak self] posts in
+            guard let _ = self else {return}
+            self!.twitPostTableView.reloadData()
+            let lastRow = self!.twitPostListVariable.value.count - 1;
+            if (!self!.twitPostListVariable.value.isEmpty) {
+                self!.twitPostTableView.scrollToRow(at: IndexPath.init(row: lastRow, section: 0),
+                                                  at: UITableViewScrollPosition.top,
+                                                  animated: true)
+            }
+        })
+        .disposed(by: disposeBag)
         
     }
 
@@ -93,11 +107,7 @@ class MainViewController: UIViewController {
     private func loadTwitPostData() {
         TwitPostManager.fecthAllPostData(completion: { (postList,state) -> Void in
             if (postList != nil && state) {
-                self.twitPostList = postList!
-                self.twitPostTableView.reloadData()
-                if (!self.twitPostList.isEmpty) {
-                    self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
-                }
+                self.twitPostListVariable.value = postList!
             }
         })
     }
@@ -105,16 +115,15 @@ class MainViewController: UIViewController {
     private func saveNewTwitPostData(_ postContent:String) {
         
         // Save to Data Base
-        TwitPostManager.postNewData(postContent,completion: { (postlist,state) -> Void in
+        TwitPostManager.postNewData(postContent,completion: { [weak self] (postlist,state) -> Void in
+            guard let _ = self else {return}
             if (state) {
-                // Refresh Current List
+                var tempArrays:[TwitPost] = self!.twitPostListVariable.value
+                // Append new element to current list
                 for post in postlist {
-                    self.twitPostList.append(post)
+                    tempArrays.append(post)
                 }
-                self.twitPostTableView.reloadData()
-                if (!self.twitPostList.isEmpty) {
-                    self.twitPostTableView.scrollToRow(at: IndexPath.init(row: self.twitPostList.count - 1, section: 0), at: UITableViewScrollPosition.top, animated: true)
-                }
+                self!.twitPostListVariable.value = tempArrays
             }
         })
     }
@@ -125,12 +134,12 @@ class MainViewController: UIViewController {
 extension MainViewController:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return twitPostList.count
+        return self.twitPostListVariable.value.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! TwitPostViewCell
-        let post = twitPostList[indexPath.row]
+        let post = self.twitPostListVariable.value[indexPath.row]
         cell.post = post
         return cell
     }
