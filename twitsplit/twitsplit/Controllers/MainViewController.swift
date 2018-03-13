@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Action
 
 class MainViewController: UIViewController {
 
@@ -42,9 +43,9 @@ class MainViewController: UIViewController {
                                                 self!.twitAddPostView!.dismissView()
                                                 
             }, confirmHandler: { [weak self] in // Tap Confirm
-                guard let _ = self else {return}
-                self!.twitAddPostView!.dismissView()
-                self!.saveNewTwitPostData(self!.twitAddPostView!.getCurrentPostContent())
+                guard let strongSelf = self else {return}
+                strongSelf.twitAddPostView!.dismissView()
+                strongSelf.saveNewTwitPostData(self!.twitAddPostView!.getCurrentPostContent())
             })
             twitAddPostView!.showViewinSuperView(self.view)
         }
@@ -57,34 +58,34 @@ class MainViewController: UIViewController {
         // Init Twit Post View to add a Post
         setUpAddTwitPostView()
         
-        // Fetch Current Data Twit Post Table View
-        loadTwitPostData()
-        
         // Subscribe for Post, Reset Tap event
-        postButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance)
-            .subscribe( onNext: { [weak self] in
-            guard let _ = self else {return}
-            self!.onPostButton()
-            }).disposed(by: disposeBag)
+        let postAction: Action<Void, Void> = Action { [weak self] in
+            guard let strongSelf = self else {return Observable.empty()}
+            strongSelf.onPostButton()
+            return Observable.empty()
+        }
+        postButton.rx.action = postAction
         
-        resetButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] in
-            guard let _ = self else {return}
-            self!.onResetButton()
-        }).disposed(by: disposeBag)
+        let resetAction: Action<Void, Void> = Action { [weak self] in
+            guard let strongSelf = self else {return Observable.empty()}
+            strongSelf.onResetButton()
+            return Observable.empty()
+        }
+        resetButton.rx.action = resetAction
         
+        let changed = twitPostList.asObservable()
         // Subcribe for Twit Post List Bind data to Table View
-        twitPostList.asObservable().bind(to: twitPostTableView.rx.items(cellIdentifier: cellID, cellType: TwitPostViewCell.self)) { (row, element, cell) in
+        changed.bind(to: twitPostTableView.rx.items(cellIdentifier: cellID, cellType: TwitPostViewCell.self)) { (row, element, cell) in
             cell.post = element
             }.disposed(by: disposeBag)
         
         // Subcribe for Twit Post List Updated Value
-        twitPostList.asObservable().subscribe( onNext: { [weak self] posts in
-            guard let _ = self else {return}
+        changed.debug().subscribe( onNext: { [weak self] posts in
+            guard let strongSelf = self else {return}
             self!.twitPostTableView.reloadData()
-            let lastRow = self!.twitPostList.value.count - 1;
-            if (!self!.twitPostList.value.isEmpty) {
-                self!.twitPostTableView.scrollToRow(at: IndexPath.init(row: lastRow, section: 0),
+            let lastRow = posts.count - 1;
+            if (!posts.isEmpty) {
+                strongSelf.twitPostTableView.scrollToRow(at: IndexPath.init(row: lastRow, section: 0),
                                                     at: UITableViewScrollPosition.top,
                                                     animated: true)
             }
@@ -97,6 +98,8 @@ class MainViewController: UIViewController {
             self!.twitPostTableView.deselectRow(at: indexpath, animated: true)
         }).disposed(by: disposeBag)
         
+        // Fetch Current Data Twit Post Table View
+        loadTwitPostData()
     }
 
     override func didReceiveMemoryWarning() {
